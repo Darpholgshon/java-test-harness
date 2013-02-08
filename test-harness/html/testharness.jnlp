@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="$$codebase">
+<information>
+  <title>Test Harness</title>
+  <vendor>Ralph Hodgson</vendor>
+  <homepage href=$$name />
+  <description>Test Harness Utility</description>
+</information>
+<offline-allowed/>
+
+<security> 
+   <all-permissions/> 
+</security>
+<resources>
+  <j2se version="1.4+" />
+  <jar href="testharness.jar" main="true"/>
+  <jar href="e5plaf.jar"/>
+</resources>
+<application-desc 
+	main-class="com.cedar.development.TestHarness"/>
+</jnlp>
+

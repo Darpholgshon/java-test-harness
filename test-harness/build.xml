@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="test-harness" default="dist" basedir=".">
+
+	<!-- Read the version number from file in case we aren't being run by anthill. -->
+	<loadfile property="read.version" srcFile="version.txt" />
+
+	<!-- Set the version property if it hasn't been set by anthill. -->
+	<condition property="version" value="${read.version}">
+		<not>
+			<isset property="version" />
+		</not>
+	</condition>
+
+	<echo>
+		Read version ${read.version} - Building version ${version}
+	</echo>
+
+	<!--set global properties for this build-->
+	<property name="src.dir" location="src" />
+	<property name="libs.dir" location="lib" />
+	<property name="build" location="classes" />
+	<property name="deployDir" location="dist" />
+
+	<property name="docs" location="docs" />
+	<property name="docsapi" location="docs/api" />
+
+	<path id="master-classpath">
+		<fileset id="3rdparty.client.jars" dir="${libs.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<!--Delete created directory trees-->
+		<delete dir="${build}" />
+		<delete dir="${deployDir}" />
+		<delete dir="${docs}" />
+		<delete dir="${docsapi}" />
+	</target>
+
+	<target name="init">
+		<!--creates the build directory-->
+		<mkdir dir="${build}" />
+		<mkdir dir="${deployDir}" />
+		<mkdir dir="${docs}" />
+		<mkdir dir="${docsapi}" />
+	</target>
+
+	<target name="resources">
+		<copy todir="${build}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.jpe" />
+				<include name="**/*.jpeg" />
+				<include name="**/*.rmf" />
+				<include name="**/*.wav" />
+				<include name="**/*.mid" />
+				<include name="**/*.midi" />
+				<include name="**/*.au" />
+				<include name="**/*.gif" />
+				<include name="**/*.png" />
+				<include name="**/*.aiff" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="init, resources">
+		<!--Compiles the java code from ${src} directory into ${build} directory-->
+		<javac destdir="${build}" source="1.4" target="1.4">
+			<src path="${src.dir}" />
+			<classpath refid="master-classpath" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<!--Put everything in ${build} into the MyProject-${DSTAMP}.jar file-->
+		<tstamp />
+		<jar jarfile="${deployDir}/${ant.project.name}-${version}.jar"
+			basedir="${build}" />
+	</target>
+
+	<target name="doc" depends="init">
+		<javadoc destdir="${docsapi}" author="true" version="true"
+			use="true" windowtitle="API for Test Harness">
+			<fileset dir="${src}" defaultexcludes="yes"></fileset>
+		</javadoc>
+	</target>
+</project>

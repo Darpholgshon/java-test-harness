@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+
+<SCRIPT LANGUAGE="JavaScript"> 
+
+var javawsInstalled = 0; 
+var javaws12Installed = 0; 
+var javaws142Installed=0; 
+isIE = "false"; 
+
+function isJREInstalled()
+{
+	if (navigator.mimeTypes && navigator.mimeTypes.length) 
+	{
+	    x = navigator.mimeTypes['application/x-java-jnlp-file'];
+	    if (x)
+	    { 
+	      javawsInstalled = 1; 
+	      javaws12Installed=1;
+	      javaws142Installed=1;
+	    }
+	}
+	else
+	{
+	    isIE = "true";
+	}
+
+	if (javawsInstalled || (navigator.userAgent.indexOf("Gecko") !=-1)) 
+	{
+	    document.write("<a href=testharness.jnlp>Launch the application</a>");
+	}
+	else
+	{
+		document.write("Click ");
+	    document.write("<a href=http://java.sun.com/PluginBrowserCheck?pass=" + getCodeBase() + "download.html&fail=http://java.sun.com/j2se/1.4.2/download.html>here</a> ");
+	    document.write("to download and install JRE 1.4.2 and the application if it fails to launch automatically.");
+	}
+}
+
+function getCodeBase()
+{
+	var codebase = document.URL;
+	codebase = codebase.substring( 0, codebase.length - 10);
+	return codebase;
+}
+
+var newWindow1 = null;
+
+function loading()
+{
+	
+	newWindow1 = null;
+	newWindow1 = window.open("http://java.sun.com/PluginBrowserCheck?pass=" + getCodeBase() + "download.html&fail=http://java.sun.com/j2se/1.4.2/download.html" , "newWin1", "width=30, height=10, left=5000, top=5000");
+	newWindow1.blur();
+}
+
+function UnLoadWindows()
+{
+	if (newWindow1 != null)
+	{
+		if( !newWindow1.closed)
+		{
+			newWindow1.close();
+		}		
+	}
+}
+</SCRIPT>
+
+<SCRIPT LANGUAGE="VBScript">
+on error resume next
+If isIE = "true" Then
+  If Not(IsObject(CreateObject("JavaWebStart.isInstalled"))) Then
+     javawsInstalled = 0
+  Else
+     javawsInstalled = 1
+  End If
+  If Not(IsObject(CreateObject("JavaWebStart.isInstalled.2"))) Then
+     javaws12Installed = 0
+  Else
+     javaws12Installed = 1
+  End If
+  If Not(IsObject(CreateObject("JavaWebStart.isInstalled.1.4.2.0"))) Then
+     javaws142Installed = 0
+  Else
+     javaws142Installed = 1
+  End If  
+End If
+</SCRIPT>
+</HEAD>
+<BODY onload="loading()" onBeforeUnload="UnLoadWindows()">
+<SCRIPT LANGUAGE="Javascript1.2">isJREInstalled()</SCRIPT>
+</BODY>
+</HTML>
+
+

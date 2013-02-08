@@ -1,0 +1,97 @@
+BODY {
+	background-color: #FFFFF4;
+	color: #1D5EAA;
+	font-family: Verdana, Arial;
+	font-size: x-small;
+}
+
+A:link,A:active,A:visited {
+	color: #D19800;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+A:hover {
+	color: #1D5EAA;
+}
+
+BUTTON {
+	border: none;
+	background: transparent;
+	color: #1D5EAA;
+	font-weight: bold;
+	font-size: x-small;
+	cursor: pointer;
+}
+
+.highlight {
+	background: url('../images/h1.gif') repeat left top;
+	text-align: center;
+	width: 140;
+}
+
+.highlight BUTTON {
+	color: #D19800;
+}
+
+.buttonbar {
+	background: url('../images/b2.gif') repeat left top;
+	width: 100%;
+}
+
+CAPTION {
+	text-align: left;
+	color: #1D5EAA;
+	font-weight: bold;
+	font-size: x-small;
+}
+
+TD {
+	color: #1D5EAA;
+	font-weight: normal;
+	font-size: x-small;
+}
+
+TH {
+	background-color: #E4F4FE;
+	color: #1D5EAA;
+	font-weight: bold;
+	font-size: x-small;
+	white-space: nowrap;
+}
+
+INPUT,SELECT {
+	color: #1D5EAA;
+	font-weight: bold;
+}
+
+.numbertext {
+	text-align: right;
+}
+
+.numberlink {
+	text-align: right;
+	color: #D19800;
+	font-weight: bold;
+}
+
+.normaltext {
+	text-align: left;
+}
+
+.normallink {
+	text-align: left;
+	color: #D19800;
+	font-weight: bold;
+}
+
+.centertext {
+	text-align: center;
+	width: 130;
+}
+
+.centerlink {
+	text-align: center;
+	color: #D19800;
+	font-weight: bold;
+}

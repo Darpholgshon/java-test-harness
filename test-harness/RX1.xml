@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.6.0" class="java.beans.XMLDecoder">
+	<object class="net.press.pa.tvod.domain.Programme">
+		<void property="episodeNo">
+			<string>2</string>
+		</void>
+		<void property="programDescriptionLevel1">
+			<string>
+				kjhdsljfhdlskjhgkjsdfhgklasdvs fdshglushdliguesr userlul
+				vre.
+			</string>
+		</void>
+		<void property="programmeId">
+			<int>1000101</int>
+		</void>
+		<void property="programmeTitle">
+			<string>Babel</string>
+		</void>
+	</object>
+</java>
